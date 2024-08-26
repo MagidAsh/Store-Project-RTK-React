@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { useProducts } from "../context/ProductContext";
 
 import styles from "./ProductsPage.module.css";
+import { FaListUl } from "react-icons/fa6";
 
 function ProductsPage() {
   const products = useProducts();
@@ -20,6 +21,13 @@ function ProductsPage() {
 
   const submitHandler = () => {
     console.log("search");
+  };
+
+  const categoryHandler = (event) => {
+    const { tagName } = event.target;
+    const category = event.target.innerText.toLowerCase();
+    console.log(category);
+    if (tagName !== "LI") return;
   };
 
   return (
@@ -42,7 +50,19 @@ function ProductsPage() {
             <Card key={product.id} data={product} />
           ))}
         </div>
-        <div>sidebar</div>
+        <div>
+          <div>
+            <FaListUl />
+            <p>Categories</p>
+          </div>
+          <ul onClick={categoryHandler}>
+            <li>All</li>
+            <li>Electronics</li>
+            <li>Jewelery</li>
+            <li>Men's Clothing</li>
+            <li>Women's Clothing</li>
+          </ul>
+        </div>
       </div>
     </>
   );
