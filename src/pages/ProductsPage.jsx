@@ -8,9 +8,14 @@ import Loader from "../components/Loader";
 
 import { useProducts } from "../context/ProductContext";
 
-import { filterProducts, searchProducts } from "../helper/helper";
+import {
+  createQueryObject,
+  filterProducts,
+  searchProducts,
+} from "../helper/helper";
 
 import styles from "./ProductsPage.module.css";
+import { useSearchParams } from "react-router-dom";
 
 function ProductsPage() {
   const products = useProducts();
@@ -19,11 +24,14 @@ function ProductsPage() {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState({});
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     setDisplayed(products);
   }, [products]);
 
   useEffect(() => {
+    setSearchParams(query);
     let finalProducts = searchProducts(products, query.search);
     finalProducts = filterProducts(finalProducts, query.category);
     console.log(finalProducts);
@@ -37,7 +45,7 @@ function ProductsPage() {
   };
 
   const submitHandler = () => {
-    setQuery((query) => ({ ...query, search }));
+    setQuery((query) => createQueryObject(query, { search }));
   };
 
   const categoryHandler = (event) => {
@@ -45,7 +53,7 @@ function ProductsPage() {
     const category = event.target.innerText.toLowerCase();
     // console.log(category);
     if (tagName !== "LI") return;
-    setQuery((query) => ({ ...query, category }));
+    setQuery((query) => createQueryObject(query, { category }));
   };
 
   return (
