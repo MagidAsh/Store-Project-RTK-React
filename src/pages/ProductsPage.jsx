@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImSearch } from "react-icons/im";
 
 import Card from "../components/Card";
@@ -12,7 +12,12 @@ import { FaListUl } from "react-icons/fa6";
 function ProductsPage() {
   const products = useProducts();
 
+  const [displayed, setDisplayed] = useState([]);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setDisplayed(products);
+  }, [products]);
 
   const searchHandler = (event) => {
     setSearch(event.target.value.toLowerCase().trim());
@@ -45,8 +50,8 @@ function ProductsPage() {
       </div>
       <div className={styles.container}>
         <div className={styles.products}>
-          {!products.length && <Loader />}
-          {products.map((product) => (
+          {!displayed.length && <Loader />}
+          {displayed.map((product) => (
             <Card key={product.id} data={product} />
           ))}
         </div>
