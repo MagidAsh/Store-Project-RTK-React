@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+
 import { ImSearch } from "react-icons/im";
+import { FaListUl } from "react-icons/fa6";
 
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
 import { useProducts } from "../context/ProductContext";
 
+import { filterProducts, searchProducts } from "../helper/helper";
+
 import styles from "./ProductsPage.module.css";
-import { FaListUl } from "react-icons/fa6";
 
 function ProductsPage() {
   const products = useProducts();
@@ -21,12 +24,16 @@ function ProductsPage() {
   }, [products]);
 
   useEffect(() => {
+    let finalProducts = searchProducts(products, query.search);
+    finalProducts = filterProducts(finalProducts, query.category);
+    console.log(finalProducts);
     console.log(query);
+    setDisplayed(finalProducts);
   }, [query]);
 
   const searchHandler = (event) => {
     setSearch(event.target.value.toLowerCase().trim());
-    console.log(search);
+    // console.log(search);
   };
 
   const submitHandler = () => {
