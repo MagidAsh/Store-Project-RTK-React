@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
@@ -51,7 +50,7 @@ function ProductsPage() {
             <Card key={product.id} data={product} />
           ))}
         </div>
-        <Sidebar setQuery={setQuery} />
+        <Sidebar query={query} setQuery={setQuery} />
       </div>
     </>
   );
