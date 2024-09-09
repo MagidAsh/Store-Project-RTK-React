@@ -1,8 +1,1 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A store project including pages (main, checkout, product details, 404) that fetches data from an API using the Axios library and extends this data to the whole application with the help of useContext hooks and also by combining hooks useReducer and hook useContext in the shopping cart of this store we will have a project with higher performance and also this project is in the form of SPA and we combine SPA with hook useContext and also we search in this project We have products and filtering products, combining search and filtering products, and handling queries
