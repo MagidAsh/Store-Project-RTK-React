@@ -3,7 +3,7 @@ import { TbListDetails } from "react-icons/tb";
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 
-import { useCart } from "../context/CartContext";
+// import { useCart } from "../context/CartContext";
 import { productQuantity, shortenText } from "../helper/helper";
 
 import styles from "../components/Card.module.css";
@@ -11,13 +11,13 @@ import styles from "../components/Card.module.css";
 function Card({ data }) {
   const { id, title, image, price } = data;
 
-  const [state, dispatch] = useCart();
+  // const [state, dispatch] = useCart();
 
-  const quantity = productQuantity(state, id);
+  // const quantity = productQuantity(state, id);
+  const quantity = 0;
 
-  console.log(state);
   const clickHandler = (type) => {
-    dispatch({ type, payload: data });
+    // dispatch({ type, payload: data });
   };
 
   return (
