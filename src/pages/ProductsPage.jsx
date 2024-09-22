@@ -7,8 +7,6 @@ import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../features/product/productsSlice";
 
-// import { useProducts } from "../context/ProductContext";
-
 import {
   filterProducts,
   searchProducts,
@@ -20,13 +18,10 @@ import SearchBox from "../components/SearchBox";
 import Sidebar from "../components/Sidebar";
 
 function ProductsPage() {
-  // const products = useProducts();
   const dispatch = useDispatch();
   const { products, loading } = useSelector((store) => store.product);
   const state = useSelector((store) => store.product);
   console.log(state);
-
-  // const products = [];
 
   const [displayed, setDisplayed] = useState([]);
   const [search, setSearch] = useState("");
