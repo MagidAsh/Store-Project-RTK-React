@@ -47,8 +47,8 @@ const cartSlice = createSlice({
     checkout: (state) => {
       state.selectedItems = [];
       state.itemsCounter = 0;
-      total = 0;
-      checkout = true;
+      state.total = 0;
+      state.checkout = true;
     },
   },
 });
