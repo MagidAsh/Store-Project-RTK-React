@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { sumProducts } from "../helper/helper";
+import { sumPrice, sumQuantity } from "../helper/helper";
 
 const initialState = {
   selectedItems: [],
@@ -17,7 +17,8 @@ const reducer = (state, action) => {
       }
       return {
         ...state,
-        ...sumProducts(state.selectedItems),
+        ...sumPrice(state.selectedItems),
+        ...sumQuantity(state.selectedItems),
         checkout: false,
       };
 
@@ -28,7 +29,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...newSelectedItems],
-        ...sumProducts(newSelectedItems),
+        ...sumPrice(state.selectedItems),
+        ...sumQuantity(state.selectedItems),
       };
 
     case "INCREASE":
@@ -38,7 +40,8 @@ const reducer = (state, action) => {
       state.selectedItems[increaseIndex].quantity++;
       return {
         ...state,
-        ...sumProducts(state.selectedItems),
+        ...sumPrice(state.selectedItems),
+        ...sumQuantity(state.selectedItems),
       };
 
     case "DECREASE":
@@ -48,7 +51,8 @@ const reducer = (state, action) => {
       state.selectedItems[decreaseIndex].quantity--;
       return {
         ...state,
-        ...sumProducts(state.selectedItems),
+        ...sumPrice(state.selectedItems),
+        ...sumQuantity(state.selectedItems),
       };
 
     case "CHECKOUT":
